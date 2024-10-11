@@ -12,31 +12,7 @@ const products = [
     {
         id: 2,
         image: '/catalog/photo.png',
-        title: 'Ароматизатор для автомобиля Diamond candle c ароматом "Кожа и древесина"',
-        price: 335,
-    },
-    {
-        id: 3,
-        image: '/catalog/photo.png',
-        title: 'Ароматизатор для автомобиля Diamond candle c ароматом "Кожа и древесина"',
-        price: 335,
-    },
-    {
-        id: 4,
-        image: '/catalog/photo.png',
-        title: 'Ароматизатор для автомобиля Diamond candle c ароматом "Кожа и древесина"',
-        price: 335,
-    },
-    {
-        id: 5,
-        image: '/catalog/photo.png',
-        title: 'Ароматизатор для автомобиля Diamond candle c ароматом "Кожа и древесина"',
-        price: 335,
-    },
-    {
-        id: 6,
-        image: '/catalog/photo.png',
-        title: 'Ароматизатор для автомобиля Diamond candle c ароматом "Кожа и древесина"',
+        title: 'Ароматизатор для автомобиля с ароматом "Свежесть океана"',
         price: 335,
     },
 ];

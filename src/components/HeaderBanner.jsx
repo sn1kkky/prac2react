@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './styles/HeaderBanner.css';
 
 const HeaderBanner = () => {
@@ -7,9 +8,9 @@ const HeaderBanner = () => {
             <header className="header">
                 <nav>
                     <ul className="nav-links">
-                        <li>О нас</li>
-                        <li>Каталог</li>
-                        <li>Где нас найти</li>
+                        <li><Link to="/">О нас</Link></li>
+                        <li><Link to="/catalog">Каталог</Link></li>
+                        <li><Link to="/">Где нас найти</Link></li>
                     </ul>
                 </nav>
                 <div className="logo">
@@ -25,7 +26,7 @@ const HeaderBanner = () => {
                 <img src="/banner/banner.jpg" alt="Banner" className="banner-image" />
                 <button className="about-button">
                     <span className='first-text'>
-                        О компании      
+                        О компании
                     </span>
                     <span className='second-text'>
                         АвтоТорг
