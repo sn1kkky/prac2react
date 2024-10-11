@@ -1,0 +1,130 @@
+.catalog {
+    padding: 20px;
+    background-color: #F5F5F5;
+    color: white;
+    padding: 70px;
+}
+
+.catalog-title {
+    font-size: 40px;
+    margin-bottom: 40px;
+    color: #232323;
+}
+
+.catalog-filter {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 55px;
+    align-items: center;
+}
+
+.category-h4 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #232323;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    background-color: transparent;
+    color: blue;
+    border: 1px solid white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filter-btn:hover {
+    background-color: blue;
+    color: white;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+@media (max-width: 1024px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.product-card {
+    max-width: 420px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product-title {
+    color: #232323;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+.product-description {
+    font-size: 14px;
+    color: #ddd;
+}
+
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.product-price {
+    font-size: 32px;
+    color: blue;
+    font-weight: 500;
+}
+
+.product-btn {
+    padding: 10px 30px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 500;
+    font-size: 20px;
+    border-radius: 4px;
+}
+
+.product-btn:hover {
+    background-color: #0056b3;
+}
+
+.load-more {
+    margin-top: 80px;
+    margin-left: 1400px;
+    padding: 15px 30px;
+    font-weight: 500;
+    background-color: #D9D9D9;
+    color: blue;
+    cursor: pointer;
+    border-radius: 0px;
+    outline: none;
+    border: 0px;
+}
+
+.load-more:hover {
+    outline: none;
+    border: none;
+}
