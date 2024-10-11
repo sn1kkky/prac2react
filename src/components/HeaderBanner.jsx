@@ -13,7 +13,7 @@ const HeaderBanner = () => {
                     </ul>
                 </nav>
                 <div className="logo">
-                    <img src="../../public/vite.svg" alt="Logo" />
+                    <img src="/vite.svg" alt="Logo" />
                 </div>
                 <div className="auth-buttons">
                     <button className="register">Регистрация</button>
@@ -22,7 +22,7 @@ const HeaderBanner = () => {
             </header>
 
             <div className="banner">
-                <img src="../../public/banner/banner.jpg" alt="Banner" className="banner-image" />
+                <img src="/banner/banner.jpg" alt="Banner" className="banner-image" />
                 <button className="about-button">
                     <span className='first-text'>
                         О компании      

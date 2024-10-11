@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/Footer.css';
-import logo from '../../public/vite.svg';
+import logo from '/vite.svg';
 
 const Footer = () => {
     return (
