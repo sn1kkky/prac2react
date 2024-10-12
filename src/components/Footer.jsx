@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles/Footer.css';
 import logo from '/vite.svg';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -9,7 +10,7 @@ const Footer = () => {
                 <img src={logo} alt="АвтоТорг Лого" className="footer-logo" />
                 <nav className="footer-nav">
                     <a href="/" className="footer-link">Главная</a>
-                    <a href="/catalog" className="footer-link">Каталог</a>
+                    <Link to="/catalog"><a className="footer-link">Каталог</a></Link>
                     <a href="/" className="footer-link">Где нас найти</a>
                 </nav>
             </div>
