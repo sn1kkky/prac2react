@@ -1,19 +1,21 @@
 import React from 'react';
-import ProductCard from './ProductCard';
+import products from '../productsData';
+import { Link } from 'react-router-dom';
 import './styles/Catalog.css';
 
-const Catalog = ({ products }) => {
+const Catalog = () => {
     return (
         <div className="catalog">
-            <h2 className="catalog-title">Каталог товаров</h2>
+            <h2>Каталог товаров</h2>
             <div className="product-grid">
                 {products.map((product) => (
-                    <ProductCard
-                        key={product.id}
-                        image={product.image}
-                        title={product.title}
-                        price={product.price}
-                    />
+                    <Link to={`/product/${product.id}`} key={product.id} className="product-link">
+                        <div className="product-card">
+                            <img src={product.image} alt={product.title} className="product-image" />
+                            <h3>{product.title}</h3>
+                            <p>{product.price} ₽</p>
+                        </div>
+                    </Link>
                 ))}
             </div>
         </div>
