@@ -15,7 +15,7 @@ const ProductDetails = () => {
     return (
         <div className="product-details">
             <button className="back-button" onClick={() => navigate('/catalog')}>
-                ← На главную
+                ← В каталог
             </button>
             <div className="product-content">
                 <img

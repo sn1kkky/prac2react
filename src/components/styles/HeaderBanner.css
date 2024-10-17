@@ -31,6 +31,7 @@ html {
 .logo {
     display: flex;
     align-items: center;
+    margin-right: 300px;
 }
 
 .logo img {

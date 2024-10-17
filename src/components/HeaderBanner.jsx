@@ -11,6 +11,7 @@ const HeaderBanner = () => {
                         <li><Link to="/">О нас</Link></li>
                         <li><Link to="/catalog">Каталог</Link></li>
                         <li><Link to="/">Где нас найти</Link></li>
+                        <li><Link to="/users">Пользователи</Link></li> {/* Новая ссылка */}
                     </ul>
                 </nav>
                 <div className="logo">
