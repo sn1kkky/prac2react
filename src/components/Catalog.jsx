@@ -1,17 +1,41 @@
-import React, { useState } from 'react'; // Убираем лишние импорты
+import React, { useState } from 'react';
 import products from '../productsData';
 import { Link, useNavigate } from 'react-router-dom';
 import './styles/Catalog.css';
 
 const Catalog = () => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [modalProduct, setModalProduct] = useState(null); // Используем только один раз useState
-
-    const filteredProducts = products.filter((product) =>
-        product.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [sortOption, setSortOption] = useState(''); // State for sorting
+    const [modalProduct, setModalProduct] = useState(null);
 
     const navigate = useNavigate();
+
+    // Filter by category and search term
+    const filteredProducts = products
+        .filter((product) =>
+            product.title.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        .filter((product) =>
+            selectedCategory ? product.category === selectedCategory : true
+        );
+
+    // Sort products based on selected sort option
+    const sortedProducts = filteredProducts.sort((a, b) => {
+        if (sortOption === 'price-asc') return a.price - b.price;
+        if (sortOption === 'price-desc') return b.price - a.price;
+        if (sortOption === 'stock-asc') return a.stock - b.stock;
+        if (sortOption === 'stock-desc') return b.stock - a.stock;
+        return 0;
+    });
+
+    const handleCategoryChange = (category) => {
+        setSelectedCategory(category);
+    };
+
+    const handleSortChange = (e) => {
+        setSortOption(e.target.value);
+    };
 
     const handleOrderClick = (product) => {
         setModalProduct(product);
@@ -32,6 +56,22 @@ const Catalog = () => {
                 <Link to="/" className="home-button">Вернуться на главную</Link>
             </div>
 
+            {/* Category Filter */}
+            <div className="category-filter">
+                <button onClick={() => handleCategoryChange('')}>Все категории</button>
+                <button onClick={() => handleCategoryChange('Ароматизаторы')}>Ароматизаторы</button>
+                <button onClick={() => handleCategoryChange('Диффузоры')}>Диффузоры</button>
+            </div>
+
+            {/* Sorting Dropdown */}
+            <select onChange={handleSortChange} className="sort-select">
+                <option value="">Сортировка</option>
+                <option value="price-asc">Цена: по возрастанию</option>
+                <option value="price-desc">Цена: по убыванию</option>
+                <option value="stock-asc">Остаток: по возрастанию</option>
+                <option value="stock-desc">Остаток: по убыванию</option>
+            </select>
+
             <input
                 type="text"
                 placeholder="Поиск товаров..."
@@ -40,9 +80,9 @@ const Catalog = () => {
                 className="search-input"
             />
 
-            {filteredProducts.length > 0 ? (
+            {sortedProducts.length > 0 ? (
                 <div className="product-grid">
-                    {filteredProducts.map((product) => (
+                    {sortedProducts.map((product) => (
                         <div
                             className="product-card"
                             key={product.id}
@@ -55,6 +95,7 @@ const Catalog = () => {
                             />
                             <h3>{product.title}</h3>
                             <p>{product.price} ₽</p>
+                            <p>Остаток: {product.stock}</p> {/* Display stock */}
                             {product.stock > 0 ? (
                                 <button
                                     className="add-to-cart-button"

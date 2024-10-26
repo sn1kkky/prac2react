@@ -269,3 +269,16 @@
     font-size: 30px;
     font-weight: 500;
 }
+
+.sort-select {
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #0056b3;
+    background-color: #fff;
+    color: #232323;
+    outline: none;
+    width: 100%;
+    max-width: 250px;
+}
