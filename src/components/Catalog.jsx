@@ -6,12 +6,13 @@ import './styles/Catalog.css';
 const Catalog = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
-    const [sortOption, setSortOption] = useState(''); // State for sorting
+    const [sortOption, setSortOption] = useState('');
     const [modalProduct, setModalProduct] = useState(null);
+    const [cart, setCart] = useState([]); // Корзина
 
     const navigate = useNavigate();
 
-    // Filter by category and search term
+    // Фильтрация товаров по категории и поисковому запросу
     const filteredProducts = products
         .filter((product) =>
             product.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -20,7 +21,7 @@ const Catalog = () => {
             selectedCategory ? product.category === selectedCategory : true
         );
 
-    // Sort products based on selected sort option
+    // Сортировка товаров
     const sortedProducts = filteredProducts.sort((a, b) => {
         if (sortOption === 'price-asc') return a.price - b.price;
         if (sortOption === 'price-desc') return b.price - a.price;
@@ -36,6 +37,12 @@ const Catalog = () => {
     const handleSortChange = (e) => {
         setSortOption(e.target.value);
     };
+
+    const handleAddToCart = (product) => {
+        setCart((prevCart) => [...prevCart, product]);
+    };
+
+    const totalAmount = cart.reduce((total, product) => total + product.price, 0);
 
     const handleOrderClick = (product) => {
         setModalProduct(product);
@@ -56,14 +63,14 @@ const Catalog = () => {
                 <Link to="/" className="home-button">Вернуться на главную</Link>
             </div>
 
-            {/* Category Filter */}
+            {/* Фильтрация по категориям */}
             <div className="category-filter">
                 <button onClick={() => handleCategoryChange('')}>Все категории</button>
                 <button onClick={() => handleCategoryChange('Ароматизаторы')}>Ароматизаторы</button>
                 <button onClick={() => handleCategoryChange('Диффузоры')}>Диффузоры</button>
             </div>
 
-            {/* Sorting Dropdown */}
+            {/* Сортировка товаров */}
             <select onChange={handleSortChange} className="sort-select">
                 <option value="">Сортировка</option>
                 <option value="price-asc">Цена: по возрастанию</option>
@@ -72,6 +79,7 @@ const Catalog = () => {
                 <option value="stock-desc">Остаток: по убыванию</option>
             </select>
 
+            {/* Поле поиска */}
             <input
                 type="text"
                 placeholder="Поиск товаров..."
@@ -95,13 +103,13 @@ const Catalog = () => {
                             />
                             <h3>{product.title}</h3>
                             <p>{product.price} ₽</p>
-                            <p>Остаток: {product.stock}</p> {/* Display stock */}
+                            <p>Остаток: {product.stock}</p>
                             {product.stock > 0 ? (
                                 <button
                                     className="add-to-cart-button"
                                     onClick={(e) => {
                                         e.stopPropagation();
-                                        navigate(`/product/${product.id}`);
+                                        handleAddToCart(product);
                                     }}
                                 >
                                     В корзину
@@ -141,6 +149,12 @@ const Catalog = () => {
                     </div>
                 </div>
             )}
+
+            {/* Корзина */}
+            <div className="cart-total">
+                <h3>Общая сумма корзины: {totalAmount} ₽</h3>
+                <p>Товаров в корзине: {cart.length}</p>
+            </div>
         </div>
     );
 };

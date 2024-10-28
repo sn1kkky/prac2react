@@ -282,3 +282,18 @@
     width: 100%;
     max-width: 250px;
 }
+
+.category-filter button {
+    margin: 5px;
+}
+
+.sort-select {
+    margin: 10px 0;
+}
+
+.cart-total {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
